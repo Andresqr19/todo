@@ -19,9 +19,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-mixin HomePage implements StatefulWidget {
-
-  var items = new List<Item>();
+class HomePage extends StatefulWidget {
+var items = new List<Item>();
 
   HomePage() {
     items = [];
@@ -41,8 +40,11 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Todo List"),
       ),
-      body: Container(
-        child: Center(child:Text("Ola Mundo!")),
+      body: ListView.builder(
+        itemCount: widget.items.length,
+        itemBuilder: (BuildContext context, int index){
+          return Text(widget.items[index].title);
+        },
       ),
     );
   }
